@@ -3,7 +3,7 @@
 # query-protocol
 [![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/query-protocol)
 
-An YQL wrapper used to generate a proxy URL to a given resource.
+A protocol designed to make serverless web apps comunication efficient and secure.
 
 Current version: **1.0.0**
 
@@ -26,10 +26,9 @@ bower install --save query-protocol
 ## Description
 
 The web is evolving amazingly fast, and there has been a huge effort to decentralize the way web applications used to be built a few years ago with the avent of more evolved and powerful client-side user agents.
-As such, new frameworks, standards, and techniques have been developed, tested and deployed over the years by the community  to make client-side development more efficient and friendly user-experience wise.
+As such, new [frameworks](https://github.com/enaqx/awesome-react), [standards](https://github.com/w3c/ServiceWorker), and [techniques](https://github.com/hemanth/awesome-pwa) have been developed, tested and deployed over the years by the community  to make client-side development more efficient and friendly user-experience wise.
 
-The goal being to decouple the client-side from the server-side, diminish the impact (and ultimately the cost) on the servers, and give front-end developers the ability to build more powerful fully-fledged application in the browser.
-
+The goal being to decouple the client-side from the server-side, diminish the impact (and ultimately the cost) on the servers, and give front-end developers the ability to build more powerful fully-fledged applications in the browser.
 
 ## Usage
 
