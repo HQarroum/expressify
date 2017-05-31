@@ -23,6 +23,14 @@ npm install --save query-protocol
 bower install --save query-protocol
 ```
 
+## Features
+
+ - Provides an encapsulation and an enveloppe protocol to exchange data between serverless web application
+ - Uses standards for encryption (AES-256), and signature of your payload (JWT)
+ - Uses standard queries in URLs to transmit data which are compatible with every browser
+ - Compresses your payload to bypass browser limits in query parameters
+ - Works with iframes, and content loaded through XMLHttpRequest
+ 
 ## Description
 
 The web is evolving amazingly fast, and there has been huge efforts to decentralize the way web applications used to be built a few years ago with the avent of more evolved and powerful client-side user agents.
