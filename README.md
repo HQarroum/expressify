@@ -25,8 +25,6 @@ bower install --save query-protocol
 
 ## Description
 
-### A bit of context
-
 The web is evolving amazingly fast, and there has been huge efforts to decentralize the way web applications used to be built a few years ago with the avent of more evolved and powerful client-side user agents.
 As such, new [frameworks](https://github.com/enaqx/awesome-react), [standards](https://github.com/w3c/ServiceWorker), and [techniques](https://github.com/hemanth/awesome-pwa) have been developed, tested and deployed over the years by the community to make client-side development more efficient and friendly user-experience wise.
 
@@ -38,11 +36,9 @@ There have been quite a lot of evolutions in the server-side world as well, micr
 
 Query protocols is a project aiming at allowing new kind of patterns in front-end development. One of this pattern is the rise of serverless applications for the browser.
 
-### How does that work ?
-
 The goal is to leverage existing web applications dedicated to offer a *service* as part as your projects. For example, think about the number of apps requiring the use of a login page. Imagine that you could simply install such an app developed by a third-party and plug it into your own application. The key to this approach is the implementation of a similar protocol between both apps in order for them to exchange relevant informations (e.g login tokens in this case).
 
-###  Is a server required to do that ?
+### Is a server required to do that ?
 
 Absolutely not. The idea behind `query-protocols` is to allow completely serverless applications to interact with one another. This kind of applications could either run on a remote static storage (such as Amazon S3), or even locally on your computer.
 
@@ -54,15 +50,16 @@ This library does not invent anything by itself, is uses the communication mecha
 
 Query protocols is payload agnostic, meaning that it does not aim at defining the semantics of the data you are going to exchange between serverless web applications. It rather focuses on two main aspects:
 
- - It defines *how* the data are going to be transmitted (e.g GET/POST queries), and *where* to send them (using a URI).
- - It defines the encapsulation of this message (signature, encryption and message envelope).
+ - It defines *how* the data are going to be transmitted (e.g GET/POST parameters), and *where* to send them (using a URI).
+ - It defines the encapsulation of this message (signature, encryption, compression and message envelope).
+ - It provides a versionned API to exchange data between micro web applications in a retro-compatible manner.
  
 ## Security challenges
 
 There are different security challenges to address with this new approach that were not problematic using more traditional monolithic applications:
 
- - If a payload is sent through the query section of the URI, it becomes visible in the history and server logs. This can be problematic if you transmit sensitive informations between applications.
- - 
+ - If a payload is sent through the query section of the URI, it becomes visible in the history of the browser, through the address bar  and the server logs (even static file storage systems like S3, or Github Pages keep logs). This can be problematic if you transmit sensitive informations between applications.
+ - Using 
 
 ## Usage
 
