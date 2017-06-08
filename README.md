@@ -3,7 +3,7 @@
 # static-protocols
 [![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/query-protocol)
 
-A protocol designed to make serverless web applications comunication efficient and secure.
+A protocol designed to make static web applications communications efficient and secure.
 
 Current version: **1.0.0**
 
