@@ -14,60 +14,92 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 ##### Using NPM
 
 ```bash
-npm install --save query-protocol
+npm install --save static-protocol
 ```
 
 ##### Using Bower
 
 ```bash
-bower install --save query-protocol
+bower install --save static-protocol
 ```
 
 ## Features
 
- - Provides an encapsulation and an enveloppe protocol to exchange data between serverless web application
- - Uses standards for encryption (AES-256), and signature of your payload (JWT)
- - Uses standard queries in URLs to transmit data which are compatible with every browser
- - Compresses your payload to bypass browser limits in query parameters
- - Works with iframes, and content loaded through XMLHttpRequest
- 
-## Description
+ - Provides an encapsulation and an enveloppe protocol to exchange data between static web application
+ - Allows static applications to expose a RESTful API to one another
+ - Built on top the standard `postMessage` API to allow secure communication between cross-domain applications
 
-The web is evolving amazingly fast, and there has been huge efforts to decentralize the way web applications used to be built a few years ago with the avent of more evolved and powerful client-side user agents.
+## Context
+
+The web is evolving amazingly fast, and there have been huge efforts to decentralize the way web applications used to be built a few years ago with the avent of more evolved and powerful client-side user agents.
 As such, new [frameworks](https://github.com/enaqx/awesome-react), [standards](https://github.com/w3c/ServiceWorker), and [techniques](https://github.com/hemanth/awesome-pwa) have been developed, tested and deployed over the years by the community to make client-side development more efficient and friendly user-experience wise.
 
-The goal being to decouple the client-side from the server-side, diminish the impact (and ultimately the cost) on the servers, and give front-end developers the ability to build more powerful fully-fledged applications in the browser.
+The main pattern during the last decade has been to decouple the client-side from the server-side, diminish the impact (and ultimately the cost) on the servers, and give front-end developers the ability to build more powerful, fully-fledged applications in the browser.
 
-There have been quite a lot of evolutions in the server-side world as well, micro-services and serverless approaches being one of the most trended ones today.
+## Description
 
-### The goal of this project
+`static-protocol` is a project aiming at allowing new kind of patterns in front-end development. One of this pattern is the rise of serverless, static applications for the browser.
 
-Query protocols is a project aiming at allowing new kind of patterns in front-end development. One of this pattern is the rise of serverless applications for the browser.
+To achieve this goal we need solid primitives to allow static applications to communicate efficiently, and the idea behind this library is to provide front-end developers with the ability to standardize the way they implement this communication schema using the same resource-centric approach that has been used in back-end development on top of HTTP during the last decade.
 
-The goal is to leverage existing web applications dedicated to offer a *service* as part as your projects. For example, think about the number of apps requiring the use of a login page. Imagine that you could simply install such an app developed by a third-party and plug it into your own application. The key to this approach is the implementation of a similar protocol between both apps in order for them to exchange relevant informations (e.g login tokens in this case).
+## Usage
 
-### Is a server required to do that ?
+The library returns a function that you can use to create a new `static-protocol` instance which allows you to interact with both its client and server interfaces. You first need to create a new instance of a static protocol handler.
 
-Absolutely not. The idea behind `query-protocols` is to allow completely serverless applications to interact with one another. This kind of applications could either run on a remote static storage (such as Amazon S3), or even locally on your computer.
+```js
+const app = new QueryProtocol.Application();
+```
+
+### Declaring resources
+
+The interface implemented to declare your accessible resources is the same middle-chained interface you'll find in server-side frameworks such as Express or Koa.
+
+```js
+/**
+ * An implementation of a handler for the resource
+ * `/foo`.
+ */
+app.get('/foo'. (req, res) => {
+ // Handle the request.
+});
+```
+
+You can natively use various methods such as `get`, `post`, `put`, `patch` and `delete` having the same semantics as when you were using them on top of HTTP.
+
+### Consuming requests
+
+The `request` object exposes different properties of the request made by a remote user-agent. This object is passed to your handlers each time a request matching your declared resources is received.
+
+```js
+app.get('/foo'. (req, res) => {
+ console.log(`
+  Query parameters: ${req.query},
+  Payload: ${req.payload},
+  Headers: ${req.headers});
+});
+```
+
+### Returning a response
+
+When the request has been treated by your handler, you can manipulate the `response` object to return a proper response to the client.
+
+```js
+app.get('/foo'. (req, res) => {
+ res.reply(200, {
+  foo: 'bar' 
+ });
+});
+```
+
+## FAQ
+
+### Is server-side needed to use `static-protocol` ?
+
+Absolutely not. The idea behind this library is to allow completely serverless applications to interact with one another. This kind of applications could either run on a remote static storage (such as Amazon S3), or even locally on your computer.
 
 ### How does that work ?
 
-This library does not invent anything by itself, is uses the communication mechanisms implemented by browsers to make communications between web-pages possible, namely using `GET` and/or `POST` queries.
-
-### What is the scope of this project ?
-
-Query protocols is payload agnostic, meaning that it does not aim at defining the semantics of the data you are going to exchange between serverless web applications. It rather focuses on two main aspects:
-
- - It defines *how* the data are going to be transmitted (e.g GET/POST parameters), and *where* to send them (using a URI).
- - It defines the encapsulation of this message (signature, encryption, compression and message envelope).
- - It provides a versionned API to exchange data between micro web applications in a retro-compatible manner.
- 
-## Security challenges
-
-There are different security challenges to address with this new approach that were not problematic using more traditional monolithic applications:
-
- - If a payload is sent through the query section of the URI, it becomes visible in the history of the browser, through the address bar  and the server logs (even static file storage systems like S3, or Github Pages keep logs). This can be problematic if you transmit sensitive informations between applications.
- - Using 
+This library uses the standard `postMessage` browser API to communicate with an application through an iframe. It creates an additional protocol layer on top of `postMessage` to create proper semantic to address remote resources.
 
 ## Usage
 
