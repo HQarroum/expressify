@@ -29,13 +29,6 @@ bower install --save static-protocol
  - Allows static applications to expose a RESTful API to one another
  - Built on top the standard `postMessage` API to allow secure communication between cross-domain applications
 
-## Context
-
-The web is evolving amazingly fast, and there have been huge efforts to decentralize the way web applications used to be built a few years ago with the avent of more evolved and powerful client-side user agents.
-As such, new [frameworks](https://github.com/enaqx/awesome-react), [standards](https://github.com/w3c/ServiceWorker), and [techniques](https://github.com/hemanth/awesome-pwa) have been developed, tested and deployed over the years by the community to make client-side development more efficient and friendly user-experience wise.
-
-The main pattern during the last decade has been to decouple the client-side from the server-side, diminish the impact (and ultimately the cost) on the servers, and give front-end developers the ability to build more powerful, fully-fledged applications in the browser.
-
 ## Description
 
 `static-protocol` is a project aiming at allowing new kind of patterns in front-end development. One of this pattern is the rise of serverless, static applications for the browser.
