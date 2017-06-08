@@ -1,0 +1,26 @@
+{
+  "name": "query-protocol",
+  "homepage": "https://github.com/HQarroum/query-protocol",
+  "authors": [
+    "Halim Qarroum <hqm.post@gmail.com>"
+  ],
+  "description": "A protocol designed to make serverless web apps comunication efficient and secure.",
+  "main": "index.js",
+  "keywords": [
+    "query",
+    "protocol",
+    "postMessage",
+    "serverless"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "middleware-chain": "^1.0.8"
+  }
+}
