@@ -1,9 +1,9 @@
 ![Logo](https://s.yimg.com/lq/i/us/pps/yql128.gif)
 
-# query-protocols
+# static-protocols
 [![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/query-protocol)
 
-A protocol designed to make serverless web apps comunication efficient and secure.
+A protocol designed to make serverless web applications comunication efficient and secure.
 
 Current version: **1.0.0**
 
@@ -75,7 +75,8 @@ app.get('/foo'. (req, res) => {
  console.log(`
   Query parameters: ${req.query},
   Payload: ${req.payload},
-  Headers: ${req.headers});
+  Headers: ${req.headers},
+  Method: ${req.method});
 });
 ```
 
@@ -85,9 +86,44 @@ When the request has been treated by your handler, you can manipulate the `respo
 
 ```js
 app.get('/foo'. (req, res) => {
+ res.reply(200, { foo: 'bar' });
+});
+```
+
+### Declaring middlewares
+
+Sometimes you just want to declare middlewares along a chain of responsibility to handle an incoming request, as you would do it with `Express`. It is also possible to do so with this library, here are a few use-cases.
+
+```js
+app.use((req, res, next) => {
+ if (req.method === 'delete') {
+  return next(new Error('Deletes are forbiddent'));
+ }
+ next();
+});
+
+/**
+ * Handling a request for the `/user` resource.
+ */
+app.get('/user'. (req, res) => {
  res.reply(200, {
-  foo: 'bar' 
+  firstName: 'Halim',
+  lastName: 'Qarroum'
  });
+});
+
+/**
+ * Handling un-treated requests.
+ */
+app.use((req, res, next) => {
+ res.reply(404);
+});
+
+/**
+ * Handling errors.
+ */
+app.use((err, req, res, next) => {
+ res.reply(500, { error: err.message });
 });
 ```
 
