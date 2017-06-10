@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="bower_components/middleware-chain/dist/middleware-chain.min.js"></script>
+  <script src="match.js"></script>
+  <script src="request.js"></script>
+  <script src="response.js"></script>
+  <script src="foo.js"></script>
+</head>
+<body>
+
+<h2>JavaScript din Body</h2>
+
+<p id="demo">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">Try it</button>
+
+<script>
+const app = new QueryProtocol.Server({
+  connection: window
+});
+
+app.use((req, res, next) => {
+  console.log('first middleware');
+ if (req.origin !== 'null') {
+  return next(new Error('Domain forbidden'));
+ }
+ next();
+});
+
+/**
+ * Handling a request for the `/user` resource.
+ */
+app.get('/user', (req, res) => {
+ res.send(200, {
+  firstName: 'Halim',
+  lastName: 'Qarroum'
+ });
+});
+
+app.use((req, res, next) => {
+  /*res.send(200, {
+    message: 'Hello!'
+  });*/
+});
+
+app.use((err, req, res, next) => {
+  console.log(err);
+});
+
+window.addEventListener('message', function (event) {
+  console.log('Callback called with', event);
+});
+
+window.postMessage({
+  caller: {},
+  payload: { foo: 'bar' },
+  resource: '/user',
+  method: 'get',
+  type: 'request',
+  transactionId: 1
+}, '*')
+
+</script>
+
+</body>
+</html>
