@@ -136,34 +136,14 @@
   };
 
   /**
-   * Causes the local service to start accepting
-   * incoming messages.
-   * @param listeners an object defining what lifecycle
-   * event listeners the client is interested in handling.
+   * Registers helper method in the `QueryServer` class for
+   * each action.
    */
-  QueryServer.prototype.get = function (url, callback) {
-    this.register('get', url, callback);
-  };
-
-  QueryServer.prototype.post = function (url, callback) {
-    this.register('post', url, callback);
-  };
-
-  QueryServer.prototype.patch = function (url, callback) {
-    this.register('patch', url, callback);
-  };
-
-  QueryServer.prototype.put = function (url, callback) {
-    this.register('put', url, callback);
-  };
-
-  QueryServer.prototype.head = function (url, callback) {
-    this.register('head', url, callback);
-  };
-
-  QueryServer.prototype.delete = function (url, callback) {
-    this.register('delete', url, callback);
-  };
+  ['get', 'post', 'patch', 'put', 'head', 'delete'].forEach(function (method) {
+    QueryServer.prototype[method] = function (url, callback) {
+      this.register(method, url, callback);
+    };
+  });
 
   return {
     Server: QueryServer
