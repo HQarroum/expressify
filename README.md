@@ -1,9 +1,9 @@
 ![Logo](https://s.yimg.com/lq/i/us/pps/yql128.gif)
 
-# static-protocols
+# query-protocol
 [![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/query-protocol)
 
-A protocol designed to make static web applications communications efficient and secure.
+A protocol designed to make static web applications communications efficient and secure. It allows front-end developers to develop a RESTful communication endpoint in a static webpage.
 
 Current version: **1.0.0**
 
@@ -14,13 +14,13 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 ##### Using NPM
 
 ```bash
-npm install --save static-protocol
+npm install --save query-protocol
 ```
 
 ##### Using Bower
 
 ```bash
-bower install --save static-protocol
+bower install --save query-protocol
 ```
 
 ## Features
@@ -36,12 +36,12 @@ bower install --save static-protocol
 
 To achieve this goal we need solid primitives to allow static applications to communicate efficiently between them, and the idea behind this library is to provide front-end developers with the ability to standardize the way they implement this communication schema using the same resource-centric approach that has been used in back-end development on top of HTTP during the last decade.
 
-## Usage
+## Server Interface
 
-The library returns a function that you can use to create a new `static-protocol` instance which allows you to interact with both its client and server interfaces. You first need to create a new instance of a static protocol handler.
+The library returns a function that you can use to create a new `query-protocol` instance which allows you to interact with both its client and server interfaces. You first need to create a new instance of a static protocol handler.
 
 ```js
-const app = new QueryProtocol.Application();
+const app = new QueryProtocol.Server();
 ```
 
 ### Declaring resources
