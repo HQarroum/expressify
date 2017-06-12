@@ -3,7 +3,7 @@
 # query-protocol
 [![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/query-protocol)
 
-A protocol designed to make static web applications communications efficient and secure. It allows front-end developers to develop a RESTful communication endpoint in a static webpage.
+A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
 
 Current version: **1.0.0**
 
@@ -11,23 +11,15 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
 ## Install
 
-##### Using NPM
-
-```bash
-npm install --save query-protocol
-```
-
-##### Using Bower
-
 ```bash
 bower install --save query-protocol
 ```
 
 ## Features
 
- - Provides an encapsulation and an enveloppe protocol to exchange data between static web application
- - Allows static applications to expose a RESTful API to one another
- - Automatic discoverability of the services exposed by an endpoint
+ - Provides an encapsulation and an enveloppe protocol to exchange data between static web applications
+ - Allows static applications to expose RESTful APIs
+ - Provides a service discoverability mechanism
  - Built on top the standard `postMessage` API to allow secure communication between cross-domain applications
 
 ## Description
@@ -53,19 +45,19 @@ The interface implemented to declare your accessible resources is the same middl
  * An implementation of a handler for the resource
  * `/foo`.
  */
-app.get('/foo'. (req, res) => {
+app.get('/foo', (req, res) => {
  // Handle the request.
 });
 ```
 
-You can natively use various methods such as `get`, `post`, `put`, `patch` and `delete` having the same semantics as when you were using them on top of HTTP.
+You can natively use various methods such as `get`, `head`, `post`, `put`, `patch` and `delete` having the same semantics as when you were using them on top of HTTP.
 
 ### Consuming requests
 
 The `request` object exposes different properties of the request made by a remote user-agent. This object is passed to your handlers each time a request matching your declared resources is received.
 
 ```js
-app.get('/foo'. (req, res) => {
+app.get('/foo', (req, res) => {
  console.log(`
   Query parameters: ${req.query},
   Payload: ${req.payload},
@@ -79,7 +71,7 @@ app.get('/foo'. (req, res) => {
 When the request has been treated by your handler, you can manipulate the `response` object to return a proper response to the client.
 
 ```js
-app.get('/foo'. (req, res) => {
+app.get('/foo', (req, res) => {
  res.reply(200, { foo: 'bar' });
 });
 ```
@@ -90,8 +82,8 @@ Sometimes you just want to declare middlewares along a chain of responsibility t
 
 ```js
 app.use((req, res, next) => {
- if (req.method === 'delete') {
-  return next(new Error('Deletes are forbiddent'));
+ if (req.domain !== 'http://foo.com') {
+  return next(new Error('Forbidden domain'));
  }
  next();
 });
@@ -99,7 +91,7 @@ app.use((req, res, next) => {
 /**
  * Handling a request for the `/user` resource.
  */
-app.get('/user'. (req, res) => {
+app.get('/user', (req, res) => {
  res.reply(200, {
   firstName: 'Halim',
   lastName: 'Qarroum'
