@@ -27,13 +27,14 @@ bower install --save static-protocol
 
  - Provides an encapsulation and an enveloppe protocol to exchange data between static web application
  - Allows static applications to expose a RESTful API to one another
+ - Automatic discoverability of the services exposed by an endpoint
  - Built on top the standard `postMessage` API to allow secure communication between cross-domain applications
 
 ## Description
 
-`static-protocol` is a project aiming at allowing new kind of patterns in front-end development. One of this pattern is the rise of serverless, static applications for the browser.
+`query-protocol` is a project aiming at allowing new kind of patterns in front-end development. One of this pattern is the rise of serverless, static applications for the browser.
 
-To achieve this goal we need solid primitives to allow static applications to communicate efficiently, and the idea behind this library is to provide front-end developers with the ability to standardize the way they implement this communication schema using the same resource-centric approach that has been used in back-end development on top of HTTP during the last decade.
+To achieve this goal we need solid primitives to allow static applications to communicate efficiently between them, and the idea behind this library is to provide front-end developers with the ability to standardize the way they implement this communication schema using the same resource-centric approach that has been used in back-end development on top of HTTP during the last decade.
 
 ## Usage
 
