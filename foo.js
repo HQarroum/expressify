@@ -14,9 +14,9 @@
 (function (name, definition) {
   if (typeof define === 'function' && define.amd) {
       // Defining the module in an AMD fashion.
-      define(['middleware-chain'], definition);
+      define(['middleware-chain', 'glob-to-regexp'], definition);
   } else {
-      var instance = definition(this.Chain);
+      var instance = definition(this.Chain, this.match);
       var old      = this[name];
 
       /**
@@ -31,7 +31,7 @@
       // namespace in a browser context.
       this[name] = instance;
   }
-})('QueryProtocol', function (Chain) {
+})('QueryProtocol', function (Chain, match) {
 
   /**
    * Description of the local service.
@@ -89,7 +89,9 @@
       s4() + '-' + s4() + s4() + s4();
   };
 
-  function isNumber(obj) { return !isNaN(parseFloat(obj)) }
+  var getParams = function (path) {
+	   return path.match(/\:\w+/g);
+  };
 
   var send = function (event, message) {
     event.source.postMessage(message, event.origin);
@@ -119,17 +121,31 @@
    */
   var QueryServer = function (opts) {
     Chain.call(this);
+    this.opts = opts || {};
     this.onMessage = onMessage.bind(this);
-    //this.use(protocolChain);
-    this.connection = opts.connection;
+    this.connection = this.opts.connection || window;
     this.connection.addEventListener('message', this.onMessage);
   };
 
+  /**
+   * Prototype inheritence.
+   */
   QueryServer.prototype = Object.create(Chain.prototype);
 
+  /**
+   * Registers a handler for a given method, associated
+   * with a resource.
+   */
   QueryServer.prototype.register = function (method, url, callback) {
+    // Storing the resource.
+    if (typeof resources[url] !== 'object') {
+      resources[url] = { methods: [] };
+    }
+    if (typeof resources[url][method] !== 'function') {
+      resources[url]
+    }
     this.use(function (req, res, next) {
-      if (req.method === method && req.path === url) {
+      if (req.method === method && match(url).test(req.path)) {
         callback(req, res, next);
       }
     });

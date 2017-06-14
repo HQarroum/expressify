@@ -1,0 +1,15 @@
+{
+  "name": "glob-to-regexp",
+  "homepage": "https://github.com/fitzgen/glob-to-regexp",
+  "version": "0.3.0",
+  "_release": "0.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.0",
+    "commit": "60be6c56893e80ba8719c31bd919e9b8f84c0c1d"
+  },
+  "_source": "https://github.com/fitzgen/glob-to-regexp.git",
+  "_target": "^0.3.0",
+  "_originalSource": "https://github.com/fitzgen/glob-to-regexp.git",
+  "_direct": true
+}

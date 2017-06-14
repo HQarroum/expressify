@@ -21,6 +21,11 @@ const app = new QueryProtocol.Server({
   connection: window
 });
 
+/*const request = new QueryProtocol.Client({
+  connection: window,
+  url: 'https://foo.com'
+});*/
+
 app.use((req, res, next) => {
   console.log('first middleware');
  if (req.origin !== 'null') {
@@ -32,7 +37,7 @@ app.use((req, res, next) => {
 /**
  * Handling a request for the `/user` resource.
  */
-app.get('/user', (req, res) => {
+app.get('/user/*/details', (req, res) => {
  res.send(200, {
   firstName: 'Halim',
   lastName: 'Qarroum'
@@ -56,7 +61,7 @@ window.addEventListener('message', function (event) {
 window.postMessage({
   caller: {},
   payload: { foo: 'bar' },
-  resource: '/user',
+  resource: '/user/foo/details',
   method: 'get',
   type: 'request',
   transactionId: 1
