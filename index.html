@@ -3,10 +3,8 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
   <script src="bower_components/middleware-chain/dist/middleware-chain.min.js"></script>
-  <script src="match.js"></script>
-  <script src="request.js"></script>
-  <script src="response.js"></script>
-  <script src="foo.js"></script>
+  <script src="bower_components/eventemitter2/lib/eventemitter2.js"></script>
+  <script src="dist/query-protocol.min.js"></script>
 </head>
 <body>
 
@@ -17,9 +15,8 @@
 <button type="button" onclick="myFunction()">Try it</button>
 
 <script>
-const app = new QueryProtocol.Server({
-  connection: window
-});
+const app = new QueryProtocol.Server();
+const client = new QueryProtocol.Client();
 
 /*const request = new QueryProtocol.Client({
   connection: window,
@@ -27,7 +24,7 @@ const app = new QueryProtocol.Server({
 });*/
 
 app.use((req, res, next) => {
-  console.log('first middleware');
+  console.log(req);
  if (req.origin !== 'null') {
   return next(new Error('Domain forbidden'));
  }
@@ -35,37 +32,61 @@ app.use((req, res, next) => {
 });
 
 /**
+ * Handling a request for the `/post` resource.
+ */
+app.get('/foo/:toto', (req, res) => {
+  console.log('called post with', req.params, 'and path', req.path);
+ res.send(200, {
+  postId: req.params.id,
+  name: 'my-post'
+ });
+});
+
+/**
  * Handling a request for the `/user` resource.
  */
-app.get('/user/*/details', (req, res) => {
+app.get('/user/:id/address/:type', (req, res) => {
+  console.log('called user with', req.params);
  res.send(200, {
   firstName: 'Halim',
   lastName: 'Qarroum'
  });
 });
 
-app.use((req, res, next) => {
-  /*res.send(200, {
-    message: 'Hello!'
-  });*/
+app.use((err, req, res, next) => {
+  console.log('Catched error', err);
 });
 
-app.use((err, req, res, next) => {
-  console.log(err);
-});
+app.listen();
 
 window.addEventListener('message', function (event) {
-  console.log('Callback called with', event);
+  //console.log('Callback called with', event);
 });
+
+setTimeout(function () {
+  client.get('/foo/1').then((res) => {
+    console.log('Response', res);
+  }, (err) => {
+    console.log('Error', err);
+  })
+}, 2000);
+
+
+/*window.postMessage({
+  caller: {},
+  payload: { foo: 'bar' },
+  resource: '/foo/toto',
+  method: 'get',
+  transactionId: 2
+}, '*');
 
 window.postMessage({
   caller: {},
   payload: { foo: 'bar' },
-  resource: '/user/foo/details',
+  resource: '/user/1/address/foo',
   method: 'get',
-  type: 'request',
-  transactionId: 1
-}, '*')
+  transactionId: 2
+}, '*');*/
 
 </script>
 

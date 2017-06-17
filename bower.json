@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "middleware-chain": "^1.0.8",
-    "glob-to-regexp": "https://github.com/fitzgen/glob-to-regexp.git#^0.3.0"
+    "glob-to-regexp": "https://github.com/fitzgen/glob-to-regexp.git#^0.3.0",
+    "eventemitter2": "^4.1.0"
   }
 }
