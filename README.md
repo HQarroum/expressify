@@ -1,7 +1,7 @@
 ![Logo](https://s.yimg.com/lq/i/us/pps/yql128.gif)
 
-# expressif
-[![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/expressif)
+# expressify
+[![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/expressify)
 
 A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
 
