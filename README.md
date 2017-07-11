@@ -1,13 +1,19 @@
-![Logo](https://s.yimg.com/lq/i/us/pps/yql128.gif)
+<h1 align="center">
+  <br>
+  <a href="#"><img src="https://s.yimg.com/lq/i/us/pps/yql128.gif" alt="microcosm" /></a>
+  <br><br>
+</h1>
 
-# expressify
-[![Build Status](https://travis-ci.org/HQarroum/query-protocol.svg?branch=master)](https://travis-ci.org/HQarroum/expressify)
+<h4 align="center">A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.</h4>
 
-A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
+<p align="center">
+  <a href="https://travis-ci.org/HQarroum/expressify">
+    <img src="https://travis-ci.org/HQarroum/query-protocol.svg?branch=master"
+         alt="Build Status">
+  </a>
+</p>
+<br>
 
-Current version: **1.0.0**
-
-Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
 ## Install
 
