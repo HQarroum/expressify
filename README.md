@@ -4,7 +4,7 @@
   <br><br>
 </h1>
 
-<h4 align="center">A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.</h4>
+<h4 align="center">An Express-like client and server for your static Web applications.</h4>
 
 <p align="center">
   <a href="https://travis-ci.org/HQarroum/expressify">
@@ -14,6 +14,11 @@
 </p>
 <br>
 
+A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
+
+Current version: **1.0.0**
+
+Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
 ## Install
 
@@ -48,10 +53,6 @@ Absolutely not. The idea behind this library is to allow completely serverless a
 ### How does that work ?
 
 This library uses the standard `postMessage` browser API to communicate with an application through an iframe. It creates an additional protocol layer on top of `postMessage` to create proper semantic to address remote resources.
-
-## Usage
-
-
 
 ### No conflict
 
