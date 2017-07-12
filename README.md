@@ -4,7 +4,7 @@
   <br><br>
 </h1>
 
-<h4 align="center">An Express-like client and server for your static Web applications.</h4>
+<h4 align="center">An Express-like server and a client implementation for your static web applications.</h4>
 
 <p align="center">
   <a href="https://travis-ci.org/HQarroum/expressify">
@@ -14,7 +14,7 @@
 </p>
 <br>
 
-A protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
+Expressify is built upon a protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
 
 Current version: **1.0.0**
 
@@ -25,7 +25,7 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 ##### Using NPM
 
 ```bash
-npm install --save expressify
+npm install --save expressify.js
 ```
 
 ##### Using Bower
@@ -40,7 +40,8 @@ bower install --save expressify
  - Allows static applications to expose RESTful APIs
  - Provides a service discoverability mechanism
  - Built on top the standard `postMessage` API to allow secure communication between cross-domain applications
+ - Provides both a server and a client implementation of this protocol
 
 ## Documentation
 
-The complete documentation and the FAQ section for Expressify are available on the [project website](https://hqarroum.github.io/expressify).
+The complete [documentation](https://hqarroum.github.io/expressify/documentation.html) and the [FAQ section](https://hqarroum.github.io/expressify/faq.html) for Expressify are available on the [project website](https://hqarroum.github.io/expressify).
