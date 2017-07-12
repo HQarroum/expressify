@@ -1,7 +1,7 @@
 /**
-  * Exporting the `Request` module appropriately given
-  * the environment (AMD, Node.js and the browser).
-  */
+ * Exporting the `Request` module appropriately given
+ * the environment (AMD, Node.js and the browser).
+ */
  (function (name, definition) {
     if (typeof define === 'function' && define.amd) {
         // Defining the module in an AMD fashion.
