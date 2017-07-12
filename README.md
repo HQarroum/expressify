@@ -4,7 +4,7 @@
   <br><br>
 </h1>
 
-<h4 align="center">An Express-like server and a client implementation for your static web applications.</h4>
+<h4 align="center">RESTful client and server implementation for static web applications running in the browser.</h4>
 
 <p align="center">
   <a href="https://travis-ci.org/HQarroum/expressify">
@@ -14,7 +14,7 @@
 </p>
 <br>
 
-Expressify is built upon a protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop a RESTful communication endpoint in their static web applications.
+Expressify is built upon a protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop and consume RESTful communication endpoints in their static web applications.
 
 Current version: **1.0.0**
 
