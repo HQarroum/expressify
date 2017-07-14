@@ -7,8 +7,7 @@
   "description": "A protocol designed to make serverless web apps comunication efficient and secure.",
   "main": "index.js",
   "keywords": [
-    "query",
-    "protocol",
+    "expressify",
     "postMessage",
     "serverless"
   ],
@@ -22,8 +21,6 @@
   ],
   "dependencies": {
     "middleware-chain": "^1.0.8",
-    "glob-to-regexp": "https://github.com/fitzgen/glob-to-regexp.git#^0.3.0",
-    "eventemitter2": "^4.1.0",
     "timed-cache": "^1.1.0"
   }
 }

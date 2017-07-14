@@ -22,43 +22,34 @@ module.exports = function (grunt) {
         ]
   	  }
   	},
-    concat: {
-      dist: {
-        src: [
-          'lib/path-to-regexp.js',
-          'lib/common.js',
-          'lib/request.js',
-          'lib/response.js',
-          'lib/response.js',
-          'lib/resource-manager.js',
-          'lib/server.js',
-          'lib/client.js',
-          'index.js'
-        ],
-        dest: 'tmp/concat.js',
-      },
-    },
-    umd: {
-      all: {
+    babel: {
+  		options: {
+  			presets: ['es2015', 'babili']
+  		},
+  		dist: {
+  			files: [
+          { expand: true, cwd: 'lib/', src: ['*.js'], dest: 'babel-output/lib/' },
+          { expand: true, src: 'index.js', cwd: '.', dest: 'babel-output/' }
+        ]
+  		}
+  	},
+    requirejs: {
+      compile: {
         options: {
-          src: 'tmp/concat.js',
-          dest: 'tmp/umd.js',
-          globalAlias: 'QueryProtocol',
-          deps: {
-            default: ['Chain', 'Emitter'],
-            amd: ['middleware-chain', 'event-emitter'],
-            cjs: ['middleware-chain', 'events'],
-            global: ['Chain', 'EventEmitter2']
-          }
+          baseUrl: 'babel-output/',
+          paths: {
+              'middleware-chain': 'empty:',
+              'lodash': 'empty:',
+              'Joi': 'empty:',
+              'timed-cache': 'empty:'
+          },
+          modules: [
+              { name: 'index' }
+          ],
+          dir: 'dist/'
         }
       }
     },
-  	uglify: {
-  	  dist: {
-  		  src: 'tmp/umd.js',
-  		  dest: 'dist/query-protocol.min.js'
-  	  }
-  	},
     mochaTest: {
       test: {
         src: ['tests/**/*.js'],
@@ -71,5 +62,5 @@ module.exports = function (grunt) {
 
   // Registering the tasks.
   grunt.registerTask('test', []);
-  grunt.registerTask('default', ['clean', 'jshint', 'concat', 'umd', 'uglify']);
+  grunt.registerTask('default', ['clean', 'babel', 'requirejs']);
 };
