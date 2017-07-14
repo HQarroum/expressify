@@ -58,17 +58,32 @@ module.exports = function (grunt) {
         options: {
           baseUrl: 'babel-output/lib/',
           paths: {
-              'middleware-chain': 'empty:',
-              'lodash': 'empty:',
-              'Joi': 'empty:',
-              'timed-cache': 'empty:',
-              'expressify': 'expressify'
+            'middleware-chain': 'empty:',
+            'lodash': 'empty:',
+            'Joi': 'empty:',
+            'timed-cache': 'empty:',
+            'expressify': 'expressify'
           },
           modules: [
-              { name: 'expressify' }
+            { name: 'expressify' }
           ],
           dir: 'dist/'
         }
+      }
+    },
+    'bower-install-simple': {
+      default: {},
+      documentation: {
+        options: {
+          cwd: 'documentation/'
+        }
+      }
+    },
+    copy: {
+      dist: {
+        files: [
+          { expand: true, cwd: 'documentation/', src: ['*.md'], dest: 'documentation/dist/' }
+        ]
       }
     },
     mochaTest: {
@@ -83,5 +98,15 @@ module.exports = function (grunt) {
 
   // Registering the tasks.
   grunt.registerTask('test', []);
-  grunt.registerTask('default', ['clean', 'jshint', 'htmlmin', 'cssmin', 'babel', 'requirejs']);
+  grunt.registerTask('default', [
+    'clean',
+    'jshint',
+    'htmlmin',
+    'cssmin',
+    'babel',
+    'requirejs',
+    'bower-install-simple',
+    'bower-install-simple:documentation',
+    'copy'
+  ]);
 };

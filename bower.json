@@ -5,7 +5,7 @@
     "Halim Qarroum <hqm.post@gmail.com>"
   ],
   "description": "A protocol designed to make serverless web apps comunication efficient and secure.",
-  "main": "index.js",
+  "main": "lib/expressify.js",
   "keywords": [
     "expressify",
     "postMessage",
