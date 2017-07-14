@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
   	clean: {
-  	  dist: ['dist/*', 'babel-output/*']
+  	  dist: ['dist/*', 'babel-output/*', 'documentation/dist/*']
   	},
   	jshint: {
       options: {
@@ -18,10 +18,30 @@ module.exports = function (grunt) {
   		  src: [
           'lib/*.js',
           'tests/*.js',
+          'documentation/assets/js/app/*.js',
           '!lib/path-to-regexp.js'
         ]
   	  }
   	},
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [
+          { expand: true, cwd: 'documentation/', src: ['*.html'], dest: 'documentation/dist/' }
+        ]
+      }
+    },
+    cssmin: {
+      dist: {
+        expand: true,
+        cwd: 'documentation/assets/css/',
+        src: ['*.css'],
+        dest: 'documentation/dist/assets/css/'
+      }
+    },
     babel: {
   		options: {
   			presets: ['es2015', 'babili']
@@ -29,6 +49,7 @@ module.exports = function (grunt) {
   		dist: {
   			files: [
           { expand: true, cwd: 'lib/', src: ['*.js'], dest: 'babel-output/lib/' },
+          { expand: true, cwd: 'documentation/assets/js/app/', src: ['*.js'], dest: 'documentation/dist/assets/js/app/' }
         ]
   		}
   	},
@@ -62,5 +83,5 @@ module.exports = function (grunt) {
 
   // Registering the tasks.
   grunt.registerTask('test', []);
-  grunt.registerTask('default', ['clean', 'jshint', 'babel', 'requirejs']);
+  grunt.registerTask('default', ['clean', 'jshint', 'htmlmin', 'cssmin', 'babel', 'requirejs']);
 };

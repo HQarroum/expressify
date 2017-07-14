@@ -1,0 +1,30 @@
+{
+  "name": "timed-cache",
+  "version": "1.1.0",
+  "main": "cache.js",
+  "authors": [
+    "Halim Qarroum"
+  ],
+  "description": "A minimalist time-based caching system.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "timed",
+    "cache",
+    "storage"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.16",
+    "jasmine": "~2.2.1"
+  }
+}
