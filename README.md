@@ -36,11 +36,11 @@ bower install --save expressify.js
 
 ## Features
 
- - Allows static applications to expose RESTful APIs.
- - Provides a high-level protocol to exchange data between static web applications.
- - Provides a service discoverability mechanism.
+ - Allows static applications to expose RESTful APIs in the browser.
+ - High-level protocol to exchange data between static web applications.
+ - Built-in service discoverability mechanism.
  - Resource centric publish-subscribe for message passing. 
- - Built on top the standard `postMessage` API to allow secure communication between cross-domain applications.
+ - Built on top the standard [`postMessage`](https://developer.mozilla.org/docs/Web/API/Window/postMessage) API to allow secure communication between cross-domain applications.
  - Provides both a server and a client implementation of this protocol,
 
 ## Documentation
