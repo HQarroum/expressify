@@ -5,7 +5,7 @@
  (function (name, definition) {
     if (typeof define === 'function' && define.amd) {
         // Defining the module in an AMD fashion.
-        define(['lib/client', 'lib/server'], definition);
+        define(['./lib/client', './lib/server'], definition);
     } else if (typeof module !== 'undefined' && module.exports) {
         // Exporting the module for Node.js/io.js.
         module.exports = definition(require('./lib/client'), require('./lib/server'));
