@@ -7,7 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt",
+    "build": "grunt",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
