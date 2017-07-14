@@ -29,7 +29,7 @@ module.exports = function (grunt) {
   		dist: {
   			files: [
           { expand: true, cwd: 'lib/', src: ['*.js'], dest: 'babel-output/lib/' },
-          { expand: true, src: 'index.js', cwd: '.', dest: 'babel-output/' }
+          { expand: true, src: 'expressify.js', cwd: '.', dest: 'babel-output/' }
         ]
   		}
   	},
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
               'timed-cache': 'empty:'
           },
           modules: [
-              { name: 'index' }
+              { name: 'expressify' }
           ],
           dir: 'dist/'
         }
