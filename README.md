@@ -31,7 +31,7 @@ npm install --save expressify.js
 ##### Using Bower
 
 ```bash
-bower install --save expressify
+bower install --save expressify.js
 ```
 
 ## Features
@@ -45,4 +45,4 @@ bower install --save expressify
 
 ## Documentation
 
-The complete [documentation](https://hqarroum.github.io/expressify/documentation.html) and the [FAQ section](https://hqarroum.github.io/expressify/faq.html) for Expressify are available on the [project website](https://hqarroum.github.io/expressify).
+The complete [documentation](https://hqarroum.github.io/expressify/documentation.html), the [API Reference](https://hqarroum.github.io/expressify/api-reference.html) as well as the [FAQ](https://hqarroum.github.io/expressify/faq.html) for Expressify are available on the [project website](https://hqarroum.github.io/expressify).
