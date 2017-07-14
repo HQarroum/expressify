@@ -2,7 +2,7 @@
   "name": "expressify",
   "version": "1.0.0",
   "description": "A protocol designed to make serverless web apps comunication efficient and secure.",
-  "main": "index.js",
+  "main": "lib/expressify.js",
   "directories": {
     "test": "tests"
   },

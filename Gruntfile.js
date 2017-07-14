@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
   	clean: {
-  	  dist: ['dist/*', 'tmp/*']
+  	  dist: ['dist/*', 'babel-output/*']
   	},
   	jshint: {
       options: {
@@ -29,19 +29,19 @@ module.exports = function (grunt) {
   		dist: {
   			files: [
           { expand: true, cwd: 'lib/', src: ['*.js'], dest: 'babel-output/lib/' },
-          { expand: true, src: 'expressify.js', cwd: '.', dest: 'babel-output/' }
         ]
   		}
   	},
     requirejs: {
       compile: {
         options: {
-          baseUrl: 'babel-output/',
+          baseUrl: 'babel-output/lib/',
           paths: {
               'middleware-chain': 'empty:',
               'lodash': 'empty:',
               'Joi': 'empty:',
-              'timed-cache': 'empty:'
+              'timed-cache': 'empty:',
+              'expressify': 'expressify'
           },
           modules: [
               { name: 'expressify' }
@@ -62,5 +62,5 @@ module.exports = function (grunt) {
 
   // Registering the tasks.
   grunt.registerTask('test', []);
-  grunt.registerTask('default', ['clean', 'babel', 'requirejs']);
+  grunt.registerTask('default', ['clean', 'jshint', 'babel', 'requirejs']);
 };

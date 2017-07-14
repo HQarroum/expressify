@@ -1,4 +1,5 @@
 {
   "laxbreak": true,
+  "expr": true,
   "esversion": 6
 }
