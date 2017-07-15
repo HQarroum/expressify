@@ -17,7 +17,7 @@
   },
   "keywords": [
     "expressify",
-    "postMessage",
+    "postmessage",
     "serverless"
   ],
   "author": "Halim Qarroum <hqm.post@gmail.com> (https://halim.qarroum.com)",
@@ -41,6 +41,7 @@
     "grunt-contrib-requirejs": "^1.0.0",
     "grunt-contrib-uglify": "^3.0.1",
     "grunt-mocha-test": "^0.13.2",
+    "grunt-open": "^0.2.3",
     "load-grunt-tasks": "^3.5.2",
     "mocha": "^3.4.2",
     "should": "^11.2.1",

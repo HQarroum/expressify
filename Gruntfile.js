@@ -8,7 +8,13 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
   	clean: {
-  	  dist: ['dist/*', 'babel-output/*', 'documentation/dist/*']
+  	  dist: [
+        'dist/*',
+        'babel-output/*',
+        'bower_components/',
+        'documentation/dist/*',
+        'documentation/assets/components/'
+      ]
   	},
   	jshint: {
       options: {
@@ -71,6 +77,20 @@ module.exports = function (grunt) {
         }
       }
     },
+    copy: {
+      dist: {
+        files: [
+          { expand: true, cwd: 'documentation/', src: ['*.md'], dest: 'documentation/dist/' },
+          { expand: true, cwd: './', src: ['*.json'], dest: 'dist/' },
+        ]
+      },
+      documentation: {
+        files: [
+          { expand: true, cwd: 'node_modules/', src: ['joi-browser/**/*'], dest: 'documentation/assets/components/' },
+          { expand: true, cwd: 'documentation/assets/', src: ['components/**/*'], dest: 'documentation/dist/assets/' }
+        ]
+      }
+    },
     'bower-install-simple': {
       default: {},
       documentation: {
@@ -79,12 +99,10 @@ module.exports = function (grunt) {
         }
       }
     },
-    copy: {
-      dist: {
-        files: [
-          { expand: true, cwd: 'documentation/', src: ['*.md'], dest: 'documentation/dist/' }
-        ]
-      }
+    open: {
+      file : {
+        path : './documentation/dist/index.html'
+      },
     },
     mochaTest: {
       test: {
@@ -97,7 +115,8 @@ module.exports = function (grunt) {
   });
 
   // Registering the tasks.
-  grunt.registerTask('test', []);
+  grunt.registerTask('documentation', ['default', 'open']);
+  grunt.registerTask('test', ['default']);
   grunt.registerTask('default', [
     'clean',
     'jshint',
@@ -105,8 +124,9 @@ module.exports = function (grunt) {
     'cssmin',
     'babel',
     'requirejs',
+    'copy',
     'bower-install-simple',
     'bower-install-simple:documentation',
-    'copy'
+    'copy:documentation'
   ]);
 };

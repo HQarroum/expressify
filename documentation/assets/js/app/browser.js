@@ -11,8 +11,6 @@ require(['common'], function () {
     require(['jquery', 'prism', 'expressify'], function ($, Prism, Expressify) {
       $(function () {
 
-        console.log(Expressify);
-
         /**
          * DOM elements.
          */
