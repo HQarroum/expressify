@@ -23,3 +23,6 @@ deploy:
     local_dir: documentation/dist/
     on:
       tags: true
+  - provider: npm
+    on:
+      tags: true

@@ -1,7 +1,6 @@
 # Created by https://www.gitignore.io
 
 ## Build
-dist/
 babel-output/
 
 ### Node ###
@@ -116,14 +115,8 @@ tramp
 # sftp configuration file
 sftp-config.json
 
-
-### grunt ###
-# Grunt usually compiles files inside this directory
-dist/
-
 # Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
 .tmp/
-
 
 ### vim ###
 [._]*.s[a-w][a-z]
