@@ -8,4 +8,13 @@ install:
   - npm install
 script:
   - npm test
-
+after_success:
+  - npm pack
+deploy:
+  provider: releases
+  api_key:
+    secure: 1f4e2fa23b120c126e26435889bfe7ba8ec9c749
+  file: "expressify-js-$TRAVIS_TAG.tgz"
+  skip_cleanup: true
+  on:
+    tags: true

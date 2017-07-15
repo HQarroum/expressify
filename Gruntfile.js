@@ -60,7 +60,7 @@ module.exports = function (grunt) {
   		}
   	},
     requirejs: {
-      compile: {
+      default: {
         options: {
           baseUrl: 'babel-output/lib/',
           paths: {
