@@ -11,10 +11,15 @@ script:
 after_success:
 - npm pack
 deploy:
-  provider: releases
-  api_key:
-    secure: SJcptmzF769gLZjg5Oxpbk5+Pzx43Fk6ol3PAdE/0/9B54doLhtZWCnOL2+2MidKtokjQUYr0+SAzOPrecyzVP0JP0XorhZnUjROQGlwCiReG1orXyGaAQXRiW7VV3gSp5KyPkioS9TmRZ9zANra44WM7na9t+SKdPajXP9jAiEP9D9H7aav3+XvHCpdhRKApQFArtFIbeKP5OgaIEuLPKiQ7tbqF//vfdif8JmViqkpERRvPc4GGCht7CN85I9FJR1qpA1CvBwEHIE8WeszNGiyA7QDoGm2tpjKqftw2cACVYAw9QevjYjHj4dUuzmdSbv4hy7cCp5NajIxS59irvUeoL4lhYY+7GlcBeTF3Wmvc/yNOLXSTe1tRWZmftTJiNAUtBlG6EjFgZGAZUycJoQG+zb85nl8jPjw3NZxRkx8Md7TgHWVpMQAK/pSEpqRr5iHf21V/3sgSaRzcCTPCxc9dvEXJRoIIvC2ny7+ezWOXKyxj1j7hjgpRTyJ0FT14zEzOGlEAzh1opLto0XiIl/XT3T2wLVj//MJ7zZ2OPmma0p0e1Wx1AFCTJTi4eIcEdJjoR5wArinNE0r0WsazfqETvqBzLarxyKv84J5qPp01V1oxpg2cL3O6X8xxMwE+ar7gWuHiwcW6sBJk4SP8LbE7+59v6P4iVxq3NYTPiI=
-  file: 'expressify-js-$TRAVIS_TAG.tgz'
-  on:
-    tags: true
-    repo: HQarroum/expressify
+  - provider: releases
+    api_key:
+      secure: SJcptmzF769gLZjg5Oxpbk5+Pzx43Fk6ol3PAdE/0/9B54doLhtZWCnOL2+2MidKtokjQUYr0+SAzOPrecyzVP0JP0XorhZnUjROQGlwCiReG1orXyGaAQXRiW7VV3gSp5KyPkioS9TmRZ9zANra44WM7na9t+SKdPajXP9jAiEP9D9H7aav3+XvHCpdhRKApQFArtFIbeKP5OgaIEuLPKiQ7tbqF//vfdif8JmViqkpERRvPc4GGCht7CN85I9FJR1qpA1CvBwEHIE8WeszNGiyA7QDoGm2tpjKqftw2cACVYAw9QevjYjHj4dUuzmdSbv4hy7cCp5NajIxS59irvUeoL4lhYY+7GlcBeTF3Wmvc/yNOLXSTe1tRWZmftTJiNAUtBlG6EjFgZGAZUycJoQG+zb85nl8jPjw3NZxRkx8Md7TgHWVpMQAK/pSEpqRr5iHf21V/3sgSaRzcCTPCxc9dvEXJRoIIvC2ny7+ezWOXKyxj1j7hjgpRTyJ0FT14zEzOGlEAzh1opLto0XiIl/XT3T2wLVj//MJ7zZ2OPmma0p0e1Wx1AFCTJTi4eIcEdJjoR5wArinNE0r0WsazfqETvqBzLarxyKv84J5qPp01V1oxpg2cL3O6X8xxMwE+ar7gWuHiwcW6sBJk4SP8LbE7+59v6P4iVxq3NYTPiI=
+    file: 'expressify-js-$TRAVIS_TAG.tgz'
+    on:
+      tags: true
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: documentation/dist/
+    on:
+      tags: true
