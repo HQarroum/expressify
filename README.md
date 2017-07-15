@@ -25,13 +25,13 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 ##### Using NPM
 
 ```bash
-npm install --save expressify.js
+npm install --save expressify-js
 ```
 
 ##### Using Bower
 
 ```bash
-bower install --save expressify.js
+bower install --save expressify-js
 ```
 
 ## Features

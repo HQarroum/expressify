@@ -9,7 +9,7 @@ requirejs.config({
     'bootstrap': 'assets/components/bootstrap/dist/js/bootstrap.min',
     'middleware-chain': 'assets/components/middleware-chain/dist/middleware-chain.min',
     'timed-cache': 'assets/components/timed-cache/cache',
-    'expressify': 'assets/components/expressify/expressify',
+    'expressify': 'assets/components/expressify-js/expressify',
     'Joi': 'assets/components/joi-browser/dist/joi-browser.min',
     'prism': 'assets/components/prism/prism'
   },
