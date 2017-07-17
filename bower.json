@@ -1,0 +1,29 @@
+{
+  "name": "expressify-js",
+  "version": "1.0.1",
+  "homepage": "https://github.com/HQarroum/expressify",
+  "authors": [
+    "Halim Qarroum <hqm.post@gmail.com>"
+  ],
+  "description": "A protocol designed to make serverless web apps comunication efficient and secure.",
+  "main": "lib/expressify.js",
+  "keywords": [
+    "expressify",
+    "postmessage",
+    "serverless"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "middleware-chain": "^1.0.8",
+    "timed-cache": "^1.1.0",
+    "eventemitter2": "^4.1.0",
+    "lodash": "^4.17.4"
+  }
+}

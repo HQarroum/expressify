@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Expressify | Browser</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link href="assets/components/normalize-css/normalize.css" rel="stylesheet" />
+  <link href="assets/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/docs.min.css" rel="stylesheet" />
+  <link href="assets/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="assets/components/prism/themes/prism.css" rel="stylesheet" />
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <script src="assets/components/html5shiv/dist/html5shiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Expressify</a>
+      </div>
+      <div id="site-navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li class="active"><a href="browser.html">Browser <span class="sr-only">(current)</span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Links <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://github.com/HQarroum/expressify">Github Project</a></li>
+            <li><a href="https://github.com/HQarroum/expressify/issues">Issues</a></li>
+            <li><a href="https://github.com/HQarroum/expressify/blob/master/LICENSE">License</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="https://github.com/HQarroum">Author</a></li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="heading margin-top-sm">
+    <div class="title">
+      Expressify <strong>Browse.</strong>
+    </div>
+    <p class="lead subtitle">
+      Browse the web for Expressify resources.
+    </p>
+  </div>
+
+  <!-- Sections -->
+  <div class="sections">
+    <section class="client-frame clearfix">
+      <!-- Client parameters -->
+      <div class="col-md-6">
+        <form>
+          <div class="form-group">
+            <label for="iframe-url">Application URL</label>
+            <input type="url" class="form-control no-radius" id="iframe-url" placeholder="https://your.application.com" required>
+          </div>
+          <div class="form-group">
+            <label for="resource-url">Resource</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <select id="method-name" name="methods">
+                  <option value="get">GET</option>
+                  <option value="head">HEAD</option>
+                  <option value="post">POST</option>
+                  <option value="put">PUT</option>
+                  <option value="patch">PATCH</option>
+                  <option value="delete">DELETE</option>
+                  <option value="options">OPTIONS</option>
+                </select>
+              </div>
+              <input type="text" class="form-control no-radius" id="resource-url" placeholder="/item/1" required>
+            </div>
+          </div>
+          <!-- Parameter payload -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="resource-url">JSON Payload</label>
+                <textarea id="json-payload" class="form-control no-radius" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="col-md-6 send-request-frame">
+              <button data-loading-text="Loading..." type="submit" class="btn btn-warning no-radius send-request-btn">Send Request</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Request output -->
+      <div class="col-md-6">
+        <div class="form-control no-radius request-output">
+          <p class="lead attribute-selection">
+            Select an URL and a resource for your request.
+            <br>
+            <i class="fa hidden-xs hidden-sm fa-custom fa-arrow-circle-o-left margin-xs" aria-hidden="true"></i>
+            <i class="fa visible-xs visible-sm fa-custom fa-arrow-circle-o-up margin-xs" aria-hidden="true"></i>
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="bs-callout bs-callout-info">
+    <h4>Use the example</h4>
+    <p>If you do not know of any Expressify online resource, or you just want to try the browser, we provide an Expressify server application that saves an item you provide using a JSON payload in its local storage, and returns it on demand.</p>
+    <p>
+      Its application URL is <code class="raw">https://hqarroum.github.io/expressify/server.html</code>, and you can call the resource <code class="raw">/item/:id</code> with a <code class="raw">GET</code> request to retrieve an item having a given <code class="raw">id</code>, using a <code class="raw">POST</code> request to store a new item, and <code class="raw">DELETE</code> to remove the resource.
+      Similarly, as with any Expressify server, you can ask it to describe the RESTful resources it currently exposes, along with their description.
+    </p>
+    <p>
+      Another resource made available through the example server is the <code class="raw">/echo</code> resource which returns back an object holding the request of the client.
+    <p>
+  </div>
+  <script data-main="assets/js/app/browser.js" src="assets/components/requirejs/require.js"></script>
+</body>
+</html>
