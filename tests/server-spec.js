@@ -161,9 +161,7 @@ describe('Expressify Server', function() {
       client.get('/baz'),
       client.get('/qux')
     ]).then((array) => {
-      array.forEach((res) => {
-        res.code.should.eql(200);
-      });
+      array.forEach((res) => res.code.should.eql(200));
       done();
     });
   });
