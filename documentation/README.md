@@ -11,6 +11,12 @@
     <img src="https://travis-ci.org/HQarroum/expressify.svg?branch=master"
          alt="Build Status">
   </a>
+  <a href="https://badge.fury.io/js/expressify-js">
+    <img src="https://badge.fury.io/js/expressify-js.svg" alt="npm version" height="18">
+  </a>
+  <a href="https://codecov.io/gh/HQarroum/expressify">
+    <img src="https://codecov.io/gh/HQarroum/expressify/branch/master/graph/badge.svg" alt="Codecov" />
+  </a>
 </p>
 <br>
 
