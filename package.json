@@ -51,6 +51,7 @@
     "time-grunt": "^1.4.0"
   },
   "dependencies": {
+    "bower-npm-resolver": "^0.8.1",
     "joi-browser": "^10.6.0",
     "lodash": "^4.17.4",
     "middleware-chain-js": "^1.0.8",

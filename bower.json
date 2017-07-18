@@ -24,6 +24,7 @@
     "middleware-chain": "^1.0.8",
     "timed-cache": "^1.1.0",
     "eventemitter2": "^4.1.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "joi-browser": "https://unpkg.com/joi-browser@10.6.1/dist/joi-browser.min.js"
   }
 }

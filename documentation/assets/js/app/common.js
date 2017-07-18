@@ -10,7 +10,7 @@ requirejs.config({
     'middleware-chain': 'assets/components/middleware-chain/dist/middleware-chain.min',
     'timed-cache': 'assets/components/timed-cache/cache',
     'expressify': 'assets/components/expressify-js/expressify.min',
-    'Joi': 'assets/components/joi-browser/dist/joi-browser.min',
+    'Joi': 'assets/components/joi-browser/index',
     'prism': 'assets/components/prism/prism',
     'event-emitter': 'assets/components/eventemitter2/lib/eventemitter2'
   },

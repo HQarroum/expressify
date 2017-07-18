@@ -85,7 +85,6 @@ module.exports = function (grunt) {
       },
       documentation: {
         files: [
-          { expand: true, cwd: 'node_modules/', src: ['joi-browser/**/*'], dest: 'documentation/assets/components/' },
           { expand: true, cwd: 'documentation/assets/', src: ['components/**/*'], dest: 'documentation/dist/assets/' }
         ]
       }
