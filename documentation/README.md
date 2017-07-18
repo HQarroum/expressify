@@ -22,9 +22,9 @@
 
 ## Description
 
-This branch contains the project website for Expressify. The website features a complete [documentation](https://hqarroum.github.io/expressify/documentation.html), the project [API Reference](https://hqarroum.github.io/expressify/api-reference.html) as well as the [FAQ](https://hqarroum.github.io/expressify/faq.html) for Expressify.
+This folder contains the project website for Expressify. The website features a complete [documentation](https://hqarroum.github.io/expressify/documentation.html), as well as the [FAQ](https://hqarroum.github.io/expressify/faq.html) for Expressify.
 The website also provides a [browser application](https://hqarroum.github.io/expressify/browser.html) which allows developers to query remote Expressify static instances pretty much like how they would do it using a traditional client-server communication.
 
-Current version: **1.0.0**
+## Build
 
-Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
+Instructions on how to build the documentation of the `Expressify` project, and running the unit tests are available in the [wiki section](https://github.com/HQarroum/expressify/wiki).
