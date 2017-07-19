@@ -190,6 +190,28 @@ describe('Expressify Server', function() {
   });
 
   /**
+   * Expressify request properties chain.
+   */
+  it('should be able to spread the request properties along the chain', function (done) {
+    const id = '1';
+
+    // Registering middleware chain.
+    server.use((req, res, next) => {
+      should.exist(req.params);
+      should.not.exist(req.params.id);
+      req.query.id.should.eql(id);
+      next();
+    }).get('/user/:id', (req, res) => {
+      req.params.id.should.eql(id);
+      done();
+    });
+
+    // Calling both valid and invalid resources
+    // to go through the chain.
+    client.get(`/user/${id}?id=${id}`);
+  });
+
+  /**
    * Expressify server publish interface.
    */
   it('should be able to publish events and dispatch them to subscribers', function (done) {

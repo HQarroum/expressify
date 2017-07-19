@@ -28,6 +28,14 @@ require(['common'], function () {
         var subscriptions = {};
 
         /**
+         * @return whether the given value `v`
+         * is a string.
+         */
+        var isString = function (v) {
+          return (typeof v === "string" || v instanceof String);
+        };
+
+        /**
          * Displays the given message in the response
          * output.
          */
@@ -79,7 +87,14 @@ require(['common'], function () {
          * output.
          */
         var error = function (message) {
-          log(color('< ' + message + '<br>', 'red'));
+          var value = null;
+          
+          try {
+            value = isString(message) ? message : JSON.stringify(message);
+          } catch (e) {
+            value = 'An error occured, and the error cannot be serialized';
+          }
+          log(color('< ' + value + '<br>', 'red'));
         };
 
         /**
@@ -164,7 +179,7 @@ require(['common'], function () {
             // Displaying the received response.
             response(o);
             // Creating a subscription to the resource.
-            //subscribe(client, res);
+            subscribe(client, res);
           }, function (err) {
             submit.button('reset');
             error(err);

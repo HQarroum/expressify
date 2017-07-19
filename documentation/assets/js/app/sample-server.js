@@ -92,7 +92,7 @@ require(['common'], function () {
     });
 
     /**
-     * Listening on every domain.
+     * Listening to incoming requests.
      */
     app.listen();
   });
