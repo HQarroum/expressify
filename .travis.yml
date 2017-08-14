@@ -29,7 +29,7 @@ deploy:
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
-    local_dir: documentation/dist/
+    local_dir: docs/dist/
     on:
       tags: true
       

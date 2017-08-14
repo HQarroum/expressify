@@ -85,7 +85,9 @@ module.exports = function (grunt) {
       },
       documentation: {
         files: [
-          { expand: true, cwd: 'docs/assets/', src: ['components/**/*'], dest: 'docs/dist/assets/' }
+          { expand: true, cwd: 'docs/assets/', src: ['components/**/*'], dest: 'docs/dist/assets/' },
+          { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
+          { expand: true, cwd: 'docs/', src: ['index.html'], dest: 'docs/dist/' }
         ]
       }
     },
