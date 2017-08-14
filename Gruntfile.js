@@ -79,12 +79,13 @@ module.exports = function (grunt) {
     copy: {
       dist: {
         files: [
-          { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
           { expand: true, cwd: './', src: ['package.json', 'bower.json'], dest: 'dist/' }
         ]
       },
       documentation: {
         files: [
+          { expand: true, cwd: './', src: ['*.md'], dest: 'docs/' },
+          { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
           { expand: true, cwd: 'docs/assets/', src: ['components/**/*'], dest: 'docs/dist/assets/' },
           { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
           { expand: true, cwd: 'docs/', src: ['index.html'], dest: 'docs/dist/' }

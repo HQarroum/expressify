@@ -22,7 +22,7 @@
 
 Expressify is built upon a protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop and consume RESTful communication endpoints in their applications.
 
-Current version: **1.0.2**
+Current version: **1.0.3**
 
 Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
@@ -51,4 +51,4 @@ bower install --save expressify-js
 
 ## Documentation
 
-The complete [documentation](/#/documentation), as well as the [FAQ](/#/faq) for Expressify are at your disposal to understand how to implement an Expressify client or server into your apps. Instructions on how to build `Expressify` and running the unit tests are available in the [wiki section](https://github.com/HQarroum/expressify/wiki).
+The complete [documentation](https://hqarroum.github.io/expressify/documentation.html), as well as the [FAQ](https://hqarroum.github.io/expressify/faq.html) for Expressify are available on the [project website](https://hqarroum.github.io/expressify). Instructions on how to build `Expressify` and running the unit tests are available in the [wiki section](https://github.com/HQarroum/expressify/wiki).

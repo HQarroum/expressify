@@ -22,7 +22,7 @@
 
 Expressify is built upon a protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop and consume RESTful communication endpoints in their applications.
 
-Current version: **1.0.2**
+Current version: **1.0.3**
 
 Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
