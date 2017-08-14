@@ -12,8 +12,8 @@ module.exports = function (grunt) {
         'dist/*',
         'babel-output/*',
         'bower_components/',
-        'documentation/dist/*',
-        'documentation/assets/components/'
+        'docs/dist/*',
+        'docs/assets/components/'
       ]
   	},
   	jshint: {
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
   		  src: [
           'lib/*.js',
           'tests/*.js',
-          'documentation/assets/js/app/*.js',
+          'docs/assets/js/app/*.js',
           '!lib/path-to-regexp.js'
         ]
   	  }
@@ -36,16 +36,16 @@ module.exports = function (grunt) {
           collapseWhitespace: true
         },
         files: [
-          { expand: true, cwd: 'documentation/', src: ['*.html'], dest: 'documentation/dist/' }
+          { expand: true, cwd: 'docs/', src: ['*.html'], dest: 'docs/dist/' }
         ]
       }
     },
     cssmin: {
       dist: {
         expand: true,
-        cwd: 'documentation/assets/css/',
+        cwd: 'docs/assets/css/',
         src: ['*.css'],
-        dest: 'documentation/dist/assets/css/'
+        dest: 'docs/dist/assets/css/'
       }
     },
     babel: {
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
   		dist: {
   			files: [
           { expand: true, cwd: 'lib/', src: ['**/*.js'], dest: 'babel-output/lib/' },
-          { expand: true, cwd: 'documentation/assets/js/app/', src: ['*.js'], dest: 'documentation/dist/assets/js/app/' }
+          { expand: true, cwd: 'docs/assets/js/app/', src: ['*.js'], dest: 'docs/dist/assets/js/app/' }
         ]
   		}
   	},
@@ -79,13 +79,13 @@ module.exports = function (grunt) {
     copy: {
       dist: {
         files: [
-          { expand: true, cwd: 'documentation/', src: ['*.md'], dest: 'documentation/dist/' },
+          { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
           { expand: true, cwd: './', src: ['package.json', 'bower.json'], dest: 'dist/' }
         ]
       },
       documentation: {
         files: [
-          { expand: true, cwd: 'documentation/assets/', src: ['components/**/*'], dest: 'documentation/dist/assets/' }
+          { expand: true, cwd: 'docs/assets/', src: ['components/**/*'], dest: 'docs/dist/assets/' }
         ]
       }
     },
@@ -93,13 +93,13 @@ module.exports = function (grunt) {
       default: {},
       documentation: {
         options: {
-          cwd: 'documentation/'
+          cwd: 'docs/'
         }
       }
     },
     open: {
       file: {
-        path: './documentation/dist/index.html'
+        path: './docs/dist/index.html'
       },
     },
     mochaTest: {
