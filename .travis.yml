@@ -30,8 +30,6 @@ deploy:
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
     local_dir: docs/dist/
-    on:
-      tags: true
       
   # NPM tag push.
   - provider: npm
