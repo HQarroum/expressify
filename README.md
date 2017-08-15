@@ -51,4 +51,4 @@ bower install --save expressify-js
 
 ## Documentation
 
-The complete [documentation](https://hqarroum.github.io/expressify/documentation.html), as well as the [FAQ](https://hqarroum.github.io/expressify/faq.html) for Expressify are available on the [project website](https://hqarroum.github.io/expressify). Instructions on how to build `Expressify` and running the unit tests are available in the [wiki section](https://github.com/HQarroum/expressify/wiki).
+The complete [documentation](https://hqarroum.github.io/expressify/#/documentation.html), as well as the [FAQ](https://hqarroum.github.io/expressify/#/faq.html) are at your disposal all the informations you need to integrate Expressify into your applications. Instructions on how to build `Expressify` and running the unit tests are available in the [wiki section](https://github.com/HQarroum/expressify/wiki).
