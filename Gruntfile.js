@@ -86,8 +86,8 @@ module.exports = function (grunt) {
         files: [
           { expand: true, cwd: './', src: ['*.md'], dest: 'docs/' },
           { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
+          { expand: true, cwd: 'docs/', src: ['.nojekyll'], dest: 'docs/dist/' },
           { expand: true, cwd: 'docs/assets/', src: ['components/**/*'], dest: 'docs/dist/assets/' },
-          { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
           { expand: true, cwd: 'docs/', src: ['index.html'], dest: 'docs/dist/' }
         ]
       }

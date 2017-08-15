@@ -2,7 +2,7 @@
 
 ## Build
 babel-output/
-documentation/dist
+docs/dist
 
 ### Node ###
 # Logs
