@@ -3,31 +3,16 @@
  * client and server instances in node.
  */
 
-const _ = require('lodash');
 const EventEmitter = require('events').EventEmitter;
-const util = require('util');
-
-/**
- * Library dependencies.
- */
-const Request  = require('../../../lib/request');
-const Response = require('../../../lib/response');
+const Request      = require('../../../lib/request');
+const Response     = require('../../../lib/response');
 
 /**
  * Wraps the given message and enrich it 
  * with metadata.
- * @param {*} message 
+ * @param {*} message the message to be wrapped.
  */
-const wrap = function (message) {
-  return ({
-    data: message,
-    strategy: new Strategy({
-      server: true,
-      parent: this
-    }),
-    origin: 'null'
-  });
-};
+const wrap = (message) => ({ data: message });
 
 /**
  * Called back when a new inbound message has
@@ -35,55 +20,56 @@ const wrap = function (message) {
  */
 const onMessage = function (message) {
   try {
-    (this.opts.parent ? this.opts.parent : this).emit('message', message);
+    this.emit('message', message);
   } catch (e) {
     console.error(e.stack);
   }
 };
 
 /**
- * The query protocol client constructor.
+ * The `echo` strategy implementation.
  */
-const Strategy = function (opts) {
-  EventEmitter.call(this);
-  this.opts = opts || {};
-  this.onMessage = onMessage.bind(this);
-  this.wrapper = wrap.bind(this);
-};
+class Strategy extends EventEmitter {
 
-/**
- * Event emitter prototype inheritance.
- */
-util.inherits(Strategy, EventEmitter);
-
-/**
- * Publishes a message to the predefined URL.
- */
-Strategy.prototype.publish = function (object) {
-  if (!this.opts.parent) {
-    return (Promise.resolve(
-      setTimeout(() => this.onMessage(
-        this.wrapper(Request.from(null, this.wrapper(object)))
-      ), 2 * 100)
-    ));
+  /**
+   * `echo` strategy constructor,
+   * @param {*} opts the options object to be used.
+   */
+  constructor(opts) {
+    super();
+    this.opts = opts || {};
+    this.onMessage = onMessage.bind(this);
   }
-  this.onMessage(this.wrapper(object));
-};
 
-/**
- * Starts listening for incoming message on the current
- * `connection` implementation.
- */
-Strategy.prototype.listen = function () {
-  // Nothing to do.
-};
+  /**
+   * Publishes a message to the predefined URL.
+   * @param object the expressify object to publish.
+   */
+  publish(object) {
+    if (object.type === 'response') {
+      return (Promise.resolve(
+        setTimeout(() => this.onMessage(
+          wrap(object)
+        ), 2 * 100)
+      ));
+    }
+    return (Promise.resolve(this.onMessage(wrap(object))));
+  }
 
-/**
- * Stops listening for incoming message on the current
- * `connection` implementation.
- */
-Strategy.prototype.close = function () {
-  // Nothing to do.
+
+  /**
+   * No-op in this implementation.
+   */
+  listen() {
+    return (Promise.resolve());
+  }
+
+  /**
+   * No-op in this implementation.
+   */
+  close() {
+    return (Promise.resolve());
+  }
 };
 
 module.exports = Strategy;

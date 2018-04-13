@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const should = require('should');
-const Expressify = require('../lib/expressify');
+const Expressify = require('../');
 const echoStrategy = new (require('./mock/strategies/echo-strategy'))();
 
 /**
@@ -8,7 +8,6 @@ const echoStrategy = new (require('./mock/strategies/echo-strategy'))();
  * test scenario.
  */
 const client = new Expressify.Client({
-  url: 'http://foo.com',
   strategy: echoStrategy
 });
 
@@ -31,7 +30,8 @@ describe('Expressify Server', function() {
    * We create a new server instance for each test.
    */
   beforeEach(() => {
-    server = new Expressify.Server({ strategy: echoStrategy }).listen();
+    server = new Expressify.Server({ strategy: echoStrategy });
+    server.listen();
   });
 
   /**

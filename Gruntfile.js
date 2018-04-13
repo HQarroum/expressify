@@ -79,7 +79,7 @@ module.exports = function (grunt) {
     copy: {
       dist: {
         files: [
-          { expand: true, cwd: './', src: ['package.json', 'bower.json'], dest: 'dist/' }
+          { expand: true, cwd: './', src: ['package.json'], dest: 'dist/' }
         ]
       },
       documentation: {
@@ -121,9 +121,8 @@ module.exports = function (grunt) {
     'htmlmin',
     'cssmin',
     'babel',
-    'requirejs',
+    //'requirejs',
     'copy',
-    'bower-install-simple',
     'bower-install-simple:documentation',
     'copy:documentation'
   ]);

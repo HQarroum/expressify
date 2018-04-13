@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const should = require('should');
-const Expressify = require('../lib/expressify');
+const Expressify = require('../');
 const echoStrategy = new (require('./mock/strategies/echo-strategy'))();
 
 /**
@@ -57,7 +57,7 @@ describe('Expressify Client', function() {
   it('should throw when missing or invalid parameters have been given', function () {
     (function () {
       new Expressify.Client();
-    }).should.throw('An URL to an endpoint is required');
+    }).should.throw('An options object with a valid strategy was expected');
   });
 
   /**
