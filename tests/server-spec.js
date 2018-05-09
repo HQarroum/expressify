@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const should = require('should');
 const Expressify = require('../');
 const echoStrategy = new (require('./mock/strategies/echo-strategy'))();
@@ -45,7 +44,7 @@ describe('Expressify Server', function() {
    * Client attributes initialization.
    */
   it('should have properly initialized attributes', function () {
-    server.subscribers.should.eql({});
+    server.strategy.subscribers.should.eql({});
   });
 
   /**
@@ -83,7 +82,7 @@ describe('Expressify Server', function() {
 
     // Registering server middlewares.
     methods.forEach((method) => {
-      server[method]('/foo', (req, res, next) => {
+      server[method]('/foo', (req, res) => {
         res.send(200);
       });
     });

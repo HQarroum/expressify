@@ -29,7 +29,7 @@ server.use(function (req, res) {
   } else if (req.resource === '/404') {
     return res.send(404);
   } else if (req.resource === '/subscriptions') {
-    return res.send(req.app.subscribers);
+    return res.send(req.app.strategy.subscribers);
   }
 });
 
