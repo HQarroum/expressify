@@ -4,7 +4,7 @@
   <br><br>
 </h1>
 
-<h4 align="center">RESTful client and server implementations on top of an agnostic transport layer.</h4>
+<h4 align="center">RESTful client and server implementations built on top of an agnostic transport layer.</h4>
 
 <p align="center">
   <a href="https://travis-ci.org/HQarroum/expressify">
@@ -16,6 +16,9 @@
   </a>
   <a href="https://codecov.io/gh/HQarroum/expressify">
     <img src="https://codecov.io/gh/HQarroum/expressify/branch/master/graph/badge.svg" alt="Codecov" />
+  </a>
+  <a href="https://www.codefactor.io/repository/github/hqarroum/expressify/overview/master">
+    <img src="https://www.codefactor.io/repository/github/hqarroum/expressify/badge/master" alt="CodeFactor" />
   </a>
 </p>
 <br>
@@ -36,10 +39,10 @@ npm install --save expressify-js
 
 ## Features
 
- - Allows applications to expose RESTful independently of the underlying transport layer.
+ - Allows applications to expose RESTful interfaces independently of the underlying transport layer.
  - High-level built-in description protocol to exchange data between applications.
- - Built-in service discoverability mechanism.
- - Resource centric publish-subscribe for message passing. 
+ - Built-in service resources discoverability mechanism.
+ - Resource centric publish-subscribe system built-in for observing resources.
  - Both a server and a client interface are provided in this implementation.
 
 ## Documentation
