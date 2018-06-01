@@ -3,31 +3,16 @@
  * client and server instances in node.
  */
 
-const _ = require('lodash');
 const EventEmitter = require('events').EventEmitter;
-const util = require('util');
-
-/**
- * Library dependencies.
- */
-const Request  = require('../../../lib/request');
-const Response = require('../../../lib/response');
+const Request      = require('../../../lib/request');
+const Response     = require('../../../lib/response');
 
 /**
  * Wraps the given message and enrich it 
  * with metadata.
- * @param {*} message 
+ * @param {*} message the message to be wrapped.
  */
-const wrap = function (message) {
-  return ({
-    data: message,
-    strategy: new Strategy({
-      server: true,
-      parent: this
-    }),
-    origin: 'null'
-  });
-};
+const wrap = (message) => ({ data: message });
 
 /**
  * Called back when a new inbound message has
@@ -35,55 +20,117 @@ const wrap = function (message) {
  */
 const onMessage = function (message) {
   try {
-    (this.opts.parent ? this.opts.parent : this).emit('message', message);
+    this.emit('message', message);
   } catch (e) {
     console.error(e.stack);
   }
 };
 
 /**
- * The query protocol client constructor.
+ * Registers a new subscription.
+ * @param {*} resource the resource to associate with
+ * the new subscription.
  */
-const Strategy = function (opts) {
-  EventEmitter.call(this);
-  this.opts = opts || {};
-  this.onMessage = onMessage.bind(this);
-  this.wrapper = wrap.bind(this);
-};
-
-/**
- * Event emitter prototype inheritance.
- */
-util.inherits(Strategy, EventEmitter);
-
-/**
- * Publishes a message to the predefined URL.
- */
-Strategy.prototype.publish = function (object) {
-  if (!this.opts.parent) {
-    return (Promise.resolve(
-      setTimeout(() => this.onMessage(
-        this.wrapper(Request.from(null, this.wrapper(object)))
-      ), 2 * 100)
-    ));
+const register = function (resource) {
+  // Creating subscription for the resource.
+  if (!this.subscribers[resource]) {
+    this.subscribers[resource] = { connection: this };
   }
-  this.onMessage(this.wrapper(object));
 };
 
 /**
- * Starts listening for incoming message on the current
- * `connection` implementation.
+ * Unregisters an existing subscription.
+ * @param {*} resource the resource associated with
+ * the subscription to remove.
  */
-Strategy.prototype.listen = function () {
-  // Nothing to do.
+const unregister = function (resource) {
+  if (!this.subscribers[resource]) return (false);
+  // Removing the subscription from memory.
+  delete this.subscribers[resource];
+  return (true);
 };
 
 /**
- * Stops listening for incoming message on the current
- * `connection` implementation.
+ * The `echo` strategy implementation.
  */
-Strategy.prototype.close = function () {
-  // Nothing to do.
+class Strategy extends EventEmitter {
+
+  /**
+   * `echo` strategy constructor,
+   * @param {*} opts the options object to be used.
+   */
+  constructor(opts) {
+    super();
+    this.opts = opts || {};
+    this.subscribers = {};
+    this.onMessage = onMessage.bind(this);
+  }
+
+  /**
+   * Publishes a message to the predefined URL.
+   * @param object the expressify object to publish.
+   */
+  publish(object) {
+    if (object.type === 'response') {
+      return (Promise.resolve(
+        setTimeout(() => this.onMessage(
+          wrap(object)
+        ), 2 * 100)
+      ));
+    }
+    return (Promise.resolve(this.onMessage(wrap(object))));
+  }
+
+  /**
+   * Creates a subscription on the resource expressed on the
+   * given request object.
+   * @param {*} req the expressify request.
+   * @param {*} res the expressify response.
+   */
+  subscribe(req, res) {
+    const topic = req.resource;
+    // Registering the subscription.
+    register.call(this, topic);
+    res.send({ topic });
+  }
+
+  /**
+   * Removes an existing subscription on the resource expressed on the
+   * given request object.
+   * @param {*} req the expressify request.
+   * @param {*} res the expressify response.
+   */
+  unsubscribe(req, res) {
+    const topic = req.resource;
+    // Removing the subscription if it exists.
+    if (!unregister.call(this, topic)) {
+      return res.send(404, { error: 'No such subscription' });
+    }
+    res.send({ topic });
+  }
+
+  /**
+   * Called back on a `ping` request.
+   * @param {*} req the expressify request.
+   * @param {*} res the expressify response.
+   */
+  ping(req, res) {
+    res.send(200);
+  }
+
+  /**
+   * No-op in this implementation.
+   */
+  listen() {
+    return (Promise.resolve());
+  }
+
+  /**
+   * No-op in this implementation.
+   */
+  close() {
+    return (Promise.resolve());
+  }
 };
 
 module.exports = Strategy;

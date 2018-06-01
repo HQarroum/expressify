@@ -1,6 +1,5 @@
-const _ = require('lodash');
 const should = require('should');
-const Expressify = require('../lib/expressify');
+const Expressify = require('../');
 const echoStrategy = new (require('./mock/strategies/echo-strategy'))();
 
 /**
@@ -8,7 +7,6 @@ const echoStrategy = new (require('./mock/strategies/echo-strategy'))();
  * test scenario.
  */
 const client = new Expressify.Client({
-  url: 'http://foo.com',
   strategy: echoStrategy
 });
 
@@ -31,7 +29,8 @@ describe('Expressify Server', function() {
    * We create a new server instance for each test.
    */
   beforeEach(() => {
-    server = new Expressify.Server({ strategy: echoStrategy }).listen();
+    server = new Expressify.Server({ strategy: echoStrategy });
+    server.listen();
   });
 
   /**
@@ -45,7 +44,7 @@ describe('Expressify Server', function() {
    * Client attributes initialization.
    */
   it('should have properly initialized attributes', function () {
-    server.subscribers.should.eql({});
+    server.strategy.subscribers.should.eql({});
   });
 
   /**
@@ -83,7 +82,7 @@ describe('Expressify Server', function() {
 
     // Registering server middlewares.
     methods.forEach((method) => {
-      server[method]('/foo', (req, res, next) => {
+      server[method]('/foo', (req, res) => {
         res.send(200);
       });
     });

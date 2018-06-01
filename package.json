@@ -1,6 +1,6 @@
 {
   "name": "expressify-js",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "A protocol designed to make serverless web apps comunication efficient and secure.",
   "main": "lib/expressify.js",
   "directories": {
@@ -20,8 +20,7 @@
   },
   "keywords": [
     "expressify",
-    "postmessage",
-    "serverless"
+    "rest"
   ],
   "author": "Halim Qarroum <hqm.post@gmail.com> (https://halim.qarroum.com)",
   "license": "MIT",

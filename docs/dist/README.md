@@ -1,10 +1,10 @@
 <h1 align="center">
   <br>
-  <a href="#"><img width="300" src="https://github.com/HQarroum/expressify/blob/master/documentation/assets/images/logo.png" alt="expressify" /></a>
+  <a href="#"><img width="300" src="https://github.com/HQarroum/expressify/blob/master/docs/assets/images/logo.png" alt="expressify" /></a>
   <br><br>
 </h1>
 
-<h4 align="center">RESTful client and server implementation for static web applications running in the browser.</h4>
+<h4 align="center">RESTful client and server implementations on top of an agnostic transport layer.</h4>
 
 <p align="center">
   <a href="https://travis-ci.org/HQarroum/expressify">
@@ -20,9 +20,9 @@
 </p>
 <br>
 
-Expressify is built upon a protocol designed to make static web applications communications efficient and secure by allowing front-end developers to develop and consume RESTful communication endpoints in their applications.
+Expressify is built upon a transport agnostic layer making it possible to expose and query RESTful interfaces on top of protocols other than HTTP (e.g MQTT, IPC, TCP, etc.).
 
-Current version: **1.0.3**
+Current version: **2.0.0**
 
 Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
@@ -34,20 +34,13 @@ Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 npm install --save expressify-js
 ```
 
-##### Using Bower
-
-```bash
-bower install --save expressify-js
-```
-
 ## Features
 
- - Allows static applications to expose RESTful APIs in the browser.
- - High-level protocol to exchange data between static web applications.
+ - Allows applications to expose RESTful independently of the underlying transport layer.
+ - High-level built-in description protocol to exchange data between applications.
  - Built-in service discoverability mechanism.
  - Resource centric publish-subscribe for message passing. 
- - Built on top the standard [`postMessage`](https://developer.mozilla.org/docs/Web/API/Window/postMessage) API to allow secure communication between cross-domain applications.
- - Provides both a server and a client implementation of this protocol,
+ - Both a server and a client interface are provided in this implementation.
 
 ## Documentation
 

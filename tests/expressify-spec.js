@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const should = require('should');
-const Expressify = require('../lib/expressify');
+const Expressify = require('../');
 
 /**
  * Expressify test plan.
