@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img width="200" src="https://github.com/HQarroum/expressify/blob/master/docs/assets/images/logo.png" alt="expressify" /></a>
+  <a href="#"><img width="160" src="https://github.com/HQarroum/expressify/blob/master/docs/assets/images/logo.png" alt="expressify" /></a>
   <br><br>
 </h1>
 
