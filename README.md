@@ -25,7 +25,7 @@
 
 Expressify is built upon a transport agnostic layer making it possible to expose and query RESTful interfaces on top of protocols other than HTTP (e.g MQTT, IPC, TCP, etc.).
 
-Current version: **2.0.0**
+Current version: **2.0.1**
 
 Lead Maintainer: [Halim Qarroum](mailto:hqm.post@gmail.com)
 
