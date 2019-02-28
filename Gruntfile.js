@@ -54,8 +54,7 @@ module.exports = function (grunt) {
   		},
   		dist: {
   			files: [
-          { expand: true, cwd: 'lib/', src: ['**/*.js'], dest: 'babel-output/lib/' },
-          { expand: true, cwd: 'docs/assets/js/app/', src: ['*.js'], dest: 'docs/dist/assets/js/app/' }
+          { expand: true, cwd: 'lib/', src: ['**/*.js'], dest: 'babel-output/lib/' }
         ]
   		}
   	},
@@ -81,29 +80,7 @@ module.exports = function (grunt) {
         files: [
           { expand: true, cwd: './', src: ['package.json'], dest: 'dist/' }
         ]
-      },
-      documentation: {
-        files: [
-          { expand: true, cwd: './', src: ['*.md'], dest: 'docs/' },
-          { expand: true, cwd: 'docs/', src: ['*.md'], dest: 'docs/dist/' },
-          { expand: true, cwd: 'docs/', src: ['.nojekyll'], dest: 'docs/dist/' },
-          { expand: true, cwd: 'docs/assets/', src: ['components/**/*'], dest: 'docs/dist/assets/' },
-          { expand: true, cwd: 'docs/', src: ['index.html'], dest: 'docs/dist/' }
-        ]
       }
-    },
-    'bower-install-simple': {
-      default: {},
-      documentation: {
-        options: {
-          cwd: 'docs/'
-        }
-      }
-    },
-    open: {
-      file: {
-        path: './docs/dist/index.html'
-      },
     },
     mochaTest: {
       test: {
@@ -113,7 +90,6 @@ module.exports = function (grunt) {
   });
 
   // Registering the tasks.
-  grunt.registerTask('documentation', ['default', 'open']);
   grunt.registerTask('test', ['mochaTest']);
   grunt.registerTask('default', [
     'clean',
@@ -121,9 +97,6 @@ module.exports = function (grunt) {
     'htmlmin',
     'cssmin',
     'babel',
-    //'requirejs',
-    'copy',
-    'bower-install-simple:documentation',
-    'copy:documentation'
+    'copy'
   ]);
 };
